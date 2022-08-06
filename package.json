@@ -8,7 +8,7 @@
     "url": "git+https://github.com/quotabook/any-counter-github-action.git"
   },
   "scripts": {
-    "dev": "ts-node ./index.ts",
+    "dev": "ts-node ./src/index.ts",
     "release": "semantic-release",
     "build": "ncc build --source-map --license licenses.txt",
     "test": "ts-node ./test/slack.ts",
