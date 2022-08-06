@@ -27,6 +27,7 @@
     "@typescript-eslint/parser": "^5.32.0",
     "@vercel/ncc": "^0.34.0",
     "eslint": "^8.21.0",
+    "espree": "^9.3.3",
     "node-fetch": "^2.6.1",
     "ts-node": "^10.9.1",
     "tslib": "^2.4.0",

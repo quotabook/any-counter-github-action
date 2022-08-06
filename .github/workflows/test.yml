@@ -18,9 +18,9 @@ jobs:
         run: yarn
       - name: Build
         run: yarn build
-      - name: run pr reviewer notify action
+      - name: Send Slack Message
         uses: ./
-        id: pr-reviewer-notify
+        id: send-slack-message
         with:
           slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
           slack-channel-id: ${{ secrets.TEST_SLACK_CHANNEL_ID }}
