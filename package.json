@@ -1,0 +1,46 @@
+{
+  "name": "any-counter-github-action",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quotabook/any-counter-github-action.git"
+  },
+  "scripts": {
+    "dev": "ts-node ./index.ts",
+    "release": "semantic-release",
+    "build": "ncc build --source-map --license licenses.txt",
+    "test": "ts-node ./test/slack.ts"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@actions/core": "^1.9.0",
+    "@actions/github": "^5.0.3",
+    "@quotalab/github-action": "^1.1.0",
+    "@slack/bolt": "^3.12.1",
+    "@slack/web-api": "^6.7.2",
+    "@vercel/ncc": "^0.28.3",
+    "node-fetch": "^2.6.1",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.2.4"
+  },
+  "devDependencies": {
+    "@semantic-release/commit-analyzer": "^8.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/github": "^7.2.1",
+    "@semantic-release/release-notes-generator": "^9.0.2",
+    "@types/node": "^16.7.1",
+    "@types/node-fetch": "^2.5.12",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "^2.2.1",
+    "semantic-release": "^17.4.2"
+  },
+  "packageManager": "yarn@3.2.2"
+}
