@@ -4,9 +4,6 @@ branding:
   color: blue
   icon: at-sign
 inputs:
-  github-token:
-    description: 'Personal access token with repository rights.'
-    required: true
   slack-bot-token:
     description: "OAuth token for your Slack App Bot to sign requests to Slack's API with."
     required: true
