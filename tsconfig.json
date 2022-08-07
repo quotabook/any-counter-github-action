@@ -15,5 +15,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "resolveJsonModule": true
-  },
+  }
 }

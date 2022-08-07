@@ -1,7 +1,9 @@
 import * as core from '@actions/core';
 import * as github from '@actions/github';
-import { SUPPROTED_EVENTS } from 'constants/github';
-import { SLACK_BOT_TOKEN } from 'utils/input';
+import { GithubActionEventName, parseGithubEvent } from '@quotalab/github-action';
+import { sendAnyCountMessage } from './utils/slack';
+import { SUPPROTED_EVENTS } from './constants/github';
+import { SLACK_BOT_TOKEN } from './utils/input';
 
 const { eventName, payload } = github.context;
 
@@ -16,11 +18,18 @@ async function main() {
     return;
   }
 
+  const event = parseGithubEvent(github.context);
+  if (event?.type === GithubActionEventName.PR열림) {
+    await sendAnyCountMessage(github.context.payload);
+  }
+
   core.info('👋 Done');
 }
 
 try {
   main();
-} catch (e: any) {
-  core.setFailed(e);
+} catch (e: unknown) {
+  if (e instanceof Error) {
+    core.setFailed(e);
+  }
 }
