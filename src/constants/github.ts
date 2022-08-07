@@ -1,2 +1,2 @@
 export const CODEOWNERS_PATH = './.github/CODEOWNERS';
-export const SUPPROTED_EVENTS = ['push'];
+export const SUPPROTED_EVENTS = ['push', 'pull_request'];
