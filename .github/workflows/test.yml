@@ -16,10 +16,10 @@ jobs:
           node-version: 16.14.0
       - name: Install Packages
         run: yarn
-      - name: Build
-        run: yarn build
+      # - name: Build
+      #   run: yarn build
       - name: Send Slack Message
-        uses: ./dist/index.js
+        uses: ./
         id: send-slack-message
         with:
           slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
