@@ -1,5 +1,6 @@
 import * as core from '@actions/core';
 import * as github from '@actions/github';
+import { GithubActionEventName, parseGithubEvent } from '@quotalab/github-action';
 import { sendAnyCountMessage } from './utils/slack';
 import { SUPPROTED_EVENTS } from './constants/github';
 import { SLACK_BOT_TOKEN } from './utils/input';
@@ -17,7 +18,10 @@ async function main() {
     return;
   }
 
-  await sendAnyCountMessage(github.context.payload);
+  const event = parseGithubEvent(github.context);
+  if (event?.type === GithubActionEventName.PR열림) {
+    await sendAnyCountMessage(github.context.payload);
+  }
 
   core.info('👋 Done');
 }
