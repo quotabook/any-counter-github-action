@@ -19,7 +19,7 @@ jobs:
       - name: Build
         run: yarn build
       - name: Send Slack Message
-        uses: ./
+        uses: ./dist/index.js
         id: send-slack-message
         with:
           slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
