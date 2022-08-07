@@ -1,10 +1,8 @@
 import * as core from '@actions/core';
 import * as github from '@actions/github';
-import { sumBy } from '@quotalab/utils';
-import { sendMessage } from './utils/slack';
+import { sendAnyCountMessage } from './utils/slack';
 import { SUPPROTED_EVENTS } from './constants/github';
-import { SLACK_BOT_TOKEN, TARGET_SLACK_CHANNEL_ID } from './utils/input';
-import { getAnyErrors } from './utils/lint';
+import { SLACK_BOT_TOKEN } from './utils/input';
 
 const { eventName, payload } = github.context;
 
@@ -19,12 +17,7 @@ async function main() {
     return;
   }
 
-  const results = await getAnyErrors();
-  const anyCount = sumBy(results, ({ errorCount }) => errorCount);
-  await sendMessage({
-    channel: TARGET_SLACK_CHANNEL_ID,
-    text: `총 ${results.length}개 파일에서 ${anyCount}개의 any 타입이 발견되었어요.`,
-  });
+  await sendAnyCountMessage(github.context.payload);
 
   core.info('👋 Done');
 }
