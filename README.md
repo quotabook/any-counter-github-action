@@ -25,8 +25,14 @@ jobs:
 
 ## Configuration
 
-| 이름                       | 설명                                                                                               |
-| -------------------------- | -------------------------------------------------------------------------------------------------- |
-| `slack-bot-token`          | 메세지를 보낼 슬랙봇 토큰. |
-| `slack-channel-id`         | 노티를 쏘고 싶은 슬랙 채널 ID                                                                      |
-| `slack-bot-signing-secret` | 슬랙봇 Signing Secret                                                                              |
+| 이름                       | 설명                          |
+| -------------------------- | ----------------------------- |
+| `slack-bot-token`          | 메세지를 보낼 슬랙봇 토큰.    |
+| `slack-channel-id`         | 노티를 쏘고 싶은 슬랙 채널 ID |
+| `slack-bot-signing-secret` | 슬랙봇 Signing Secret         |
+
+## Permissions
+
+Any Counter는 슬랙봇과 연동되어 슬랙에 노티피케이션을 발송합니다. Any Counter와 연동되는 슬랙봇은 다음 퍼미션들을 가지고 있어야 합니다.
+
+`channels:history`, `channels:read`, `chat:write`, `chat:write.public`, `groups:history`, `groups:read`, `im:history`, `im:read`, `mpim:history`, `mpim:read`
