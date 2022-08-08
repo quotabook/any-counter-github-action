@@ -3,7 +3,7 @@ import * as github from '@actions/github';
 import { GithubActionEventName, parseGithubEvent } from '@quotalab/github-action';
 import { sendAnyCountMessage } from './utils/slack';
 import { SUPPROTED_EVENTS } from './constants/github';
-import { SLACK_BOT_TOKEN } from './utils/input';
+import { SLACK_BOT_SIGNING_SECRET, SLACK_BOT_TOKEN, TARGET_SLACK_CHANNEL_ID } from './utils/input';
 
 const { eventName, payload } = github.context;
 
@@ -12,6 +12,8 @@ async function main() {
   core.info(`eventName = ${eventName}`);
   core.info(`action = ${payload.action}`);
   core.info(`token = ${SLACK_BOT_TOKEN.length}`);
+  core.info(`signingSecret = ${SLACK_BOT_SIGNING_SECRET.length}`);
+  core.info(`targetChannel = ${TARGET_SLACK_CHANNEL_ID}`);
 
   if (!SUPPROTED_EVENTS.includes(eventName)) {
     core.warning(`현재 이 액션은 ${SUPPROTED_EVENTS.join(', ')} 이벤트만 지원합니다.`);
