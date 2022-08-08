@@ -3,12 +3,34 @@ import { getRepository } from '@quotalab/github-action';
 import { WebhookPayload } from '@actions/github/lib/interfaces';
 import { TARGET_SLACK_CHANNEL_ID } from '../../../utils/input';
 import { getAnyErrors } from '../../../utils/lint';
-import { sendMessage } from '..';
+import { getSentMessages, sendMessage } from '..';
+
+export const messageTitle = 'Any 타입이 늘어났어요!' as const;
+
+export async function getLastAnyCount() {
+  const messages = await getSentMessages();
+
+  if (messages == null) {
+    return 0;
+  }
+
+  const lastMessageBlocks = messages[0].blocks?.map(({ text }) => text);
+  const anyCountMessage = lastMessageBlocks?.find(block => block?.text?.includes('전체 Any 타입 개수'));
+  const anyCount = anyCountMessage?.text?.replace(/전체 Any 타입 개수: \*?(\d+)개\*?/, '$1');
+
+  return anyCount != null ? Number(anyCount) : 0;
+}
 
 export async function sendAnyCountMessage(payload: WebhookPayload) {
   const repository = getRepository(payload);
   const results = await getAnyErrors();
-  const anyCount = sumBy(results, ({ errorCount }) => errorCount);
+  const lastAnyCount = await getLastAnyCount();
+  const newAnyCount = sumBy(results, ({ errorCount }) => errorCount);
+
+  const isIncreasedAnyType = newAnyCount > lastAnyCount;
+  if (isIncreasedAnyType === false) {
+    return;
+  }
 
   return sendMessage({
     channel: TARGET_SLACK_CHANNEL_ID,
@@ -17,7 +39,7 @@ export async function sendAnyCountMessage(payload: WebhookPayload) {
         type: 'header',
         text: {
           type: 'plain_text',
-          text: 'Any를 발견했어요! :typescript:',
+          text: `${messageTitle} :typescript:`,
         },
       },
       {
@@ -34,7 +56,14 @@ export async function sendAnyCountMessage(payload: WebhookPayload) {
         type: 'section',
         text: {
           type: 'mrkdwn',
-          text: `총 ${results.length}개의 파일에서 ${anyCount}개의 any 타입이 발견되었어요.`,
+          text: `늘어난 Any 타입 개수: *${newAnyCount - lastAnyCount}*`,
+        },
+      },
+      {
+        type: 'section',
+        text: {
+          type: 'mrkdwn',
+          text: `전체 Any 타입 개수: *${newAnyCount}*`,
         },
       },
       {

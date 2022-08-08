@@ -5,13 +5,13 @@ branding:
   icon: at-sign
 inputs:
   slack-bot-token:
-    description: "OAuth token for your Slack App Bot to sign requests to Slack's API with."
-    required: true
-  slack-channel-id:
-    description: 'ID of the channel or conversation in Slack you would like messages posted to.'
+    description: '슬랙봇의 Bot Token'
     required: true
   slack-bot-signing-secret:
-    description: 'Slack Bot Signing Secret'
+    description: '슬랙봇의 Signing Secret'
+    required: true
+  slack-channel-id:
+    description: 'Any Counter를 사용할 슬랙 채널의 ID'
     required: true
 
 runs:
