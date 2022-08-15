@@ -25,8 +25,14 @@ module.exports = {
     },
   },
   output: {
-    filename: 'index.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
+    chunkFilename: '[id].[chunkhash].js',
   },
   plugins: [new NodePolyfillPlugin()],
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
 };
