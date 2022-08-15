@@ -1,12 +1,7 @@
 import { ESLint } from 'eslint';
-import { clearCaches } from '@typescript-eslint/parser';
-import { configs } from '@typescript-eslint/eslint-plugin';
-import '@typescript-eslint/scope-manager';
-import '@typescript-eslint/type-utils';
-import '@typescript-eslint/types';
-import '@typescript-eslint/typescript-estree';
-import '@typescript-eslint/utils';
-import '@typescript-eslint/visitor-keys';
+
+require.resolve('@typescript-eslint/parser');
+require.resolve('@typescript-eslint/eslint-plugin');
 
 const eslint = new ESLint({
   useEslintrc: false,
@@ -22,14 +17,12 @@ const eslint = new ESLint({
       },
     },
     rules: {
-      '@typescript-eslint/no-explicit-any':
-        configs.recommended?.rules?.['@typescript-eslint/no-explicit-any'] ?? 'error',
+      '@typescript-eslint/no-explicit-any': 'error',
     },
   },
 });
 
 export async function lintSourceCodes(path = './src') {
-  clearCaches();
   return eslint.lintFiles([`${path}/**/*.ts`]);
 }
 
