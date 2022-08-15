@@ -1,5 +1,4 @@
 {
-  "include": ["node_modules/@typescript-eslint/typescript-estree"],
   "compilerOptions": {
     "baseUrl": "./src",
     "outDir": "./lib",
