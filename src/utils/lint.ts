@@ -1,4 +1,7 @@
 import { ESLint } from 'eslint';
+import '@typescript-eslint/parser';
+import '@typescript-eslint/eslint-plugin';
+import '@typescript-eslint/estree';
 
 const eslint = new ESLint({
   useEslintrc: false,
