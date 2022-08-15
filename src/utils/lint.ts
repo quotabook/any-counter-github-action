@@ -1,8 +1,5 @@
 import { ESLint } from 'eslint';
 
-require.resolve('@typescript-eslint/parser');
-require.resolve('@typescript-eslint/eslint-plugin');
-
 const eslint = new ESLint({
   useEslintrc: false,
   baseConfig: {
