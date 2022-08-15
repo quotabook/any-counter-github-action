@@ -1,4 +1,5 @@
 const path = require('path');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
 module.exports = {
   entry: './src/index.ts',
@@ -19,19 +20,7 @@ module.exports = {
       fs: false,
       tls: false,
       net: false,
-      path: false,
-      zlib: false,
-      http: false,
-      https: false,
-      stream: false,
-      crypto: false,
-      assert: false,
-      url: false,
-      util: false,
-      os: false,
       module: false,
-      buffer: false,
-      querystring: false,
       async_hooks: false,
     },
   },
@@ -39,4 +28,5 @@ module.exports = {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
   },
+  plugins: [new NodePolyfillPlugin()],
 };

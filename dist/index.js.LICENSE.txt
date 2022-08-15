@@ -7,6 +7,20 @@
  */
 
 /*!
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
+ * @license  MIT
+ */
+
+/*!
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <https://feross.org>
+ * @license  MIT
+ */
+
+/*!
  * accepts
  * Copyright(c) 2014 Jonathan Ong
  * Copyright(c) 2015 Douglas Christopher Wilson
@@ -111,12 +125,6 @@
  *
  * Copyright (c) 2014-present, Jon Schlinkert.
  * Licensed under the MIT License.
- */
-
-/*!
- * finalhandler
- * Copyright(c) 2014-2022 Douglas Christopher Wilson
- * MIT Licensed
  */
 
 /*!
@@ -237,13 +245,6 @@
  */
 
 /*!
- * raw-body
- * Copyright(c) 2013-2014 Jonathan Ong
- * Copyright(c) 2014-2022 Douglas Christopher Wilson
- * MIT Licensed
- */
-
-/*!
  * send
  * Copyright(c) 2012 TJ Holowaychuk
  * Copyright(c) 2014-2022 Douglas Christopher Wilson
@@ -315,6 +316,10 @@ PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
 
 /*! @author Toru Nagashima <https://github.com/mysticatea> */
+
+/*! https://mths.be/punycode v1.3.2 by @mathias */
+
+/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 
 /*! queue-microtask. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
 
