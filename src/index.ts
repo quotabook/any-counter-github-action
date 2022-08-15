@@ -21,6 +21,7 @@ async function main() {
   }
 
   const event = parseGithubEvent(github.context);
+  core.info(`Event = ${event}`);
   if (event?.type === GithubActionEventName.PR열림) {
     await sendAnyCountMessage(github.context.payload);
   }
