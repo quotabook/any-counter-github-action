@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "ts-node ./src/index.ts",
     "release": "semantic-release",
-    "build": "ncc build --license licenses.txt",
+    "build": "ncc build --asset-builds --license licenses.txt",
     "test": "ts-node ./test/slack.ts",
     "lint": "eslint src --ext .ts,.tsx --quiet"
   },
